@@ -5,6 +5,8 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(add-to-list 'initial-frame-alist '(fullscreen . maximized)) 
+
 ;; no tool bar and menu bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -26,7 +28,7 @@
  '(custom-safe-themes
    '("a6e620c9decbea9cac46ea47541b31b3e20804a4646ca6da4cce105ee03e8d0e" default))
  '(package-selected-packages
-   '(irony-eldoc cl-libify company-irony company doom-modeline doom-themes which-key use-package)))
+   '(aggressive-indent irony-eldoc cl-libify company-irony company doom-modeline doom-themes which-key use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -89,3 +91,11 @@
 (add-hook 'objc-mode-hook 'irony-mode)
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  backup-by-copying t    ; Don't delink hardlinks
+  version-control t      ; Use version numbers on backups
+  delete-old-versions t  ; Automatically delete excess backups
+  kept-new-versions 20   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
+  )
